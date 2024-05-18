@@ -1,0 +1,73 @@
+<div class="mat-dialog-container">
+    <h2 mat-dialog-title>Dodaj książkę</h2>
+<mat-dialog-content class="dialog-content">
+  <form>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Tytuł</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Autor</mat-label>
+        <input matInput formControlName="author">
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Wydawnictwo</mat-label>
+        <input matInput formControlName="publisher">
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Data wydania</mat-label>
+        <input matInput [matDatepicker]="releaseDatePicker" formControlName="releaseDate">
+        <mat-datepicker-toggle matSuffix [for]="releaseDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #releaseDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Liczba stron</mat-label>
+        <input matInput type="number" formControlName="numberOfPages">
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Opis</mat-label>
+      <textarea matInput rows="4" formControlName="description"></textarea>
+    </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Status czytania</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="planning">Zaplanowane</mat-option>
+          <mat-option value="reading">W trakcie</mat-option>
+          <mat-option value="on hold">Wstrzymane</mat-option>
+          <mat-option value="canceled">Anulowane</mat-option>
+          <mat-option value="completed">Ukończone</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Przeczytane strony</mat-label>
+        <input matInput type="number" formControlName="pagesRead">
+      </mat-form-field>
+      </div>
+      <div class="form-row">
+      <mat-form-field appearance="fill">
+        <mat-label>Ocena</mat-label>
+        <input matInput type="number" min="1" max="10" formControlName="rating">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button>Anuluj</button>
+  <button mat-raised-button color="primary">Dodaj</button>
+</mat-dialog-actions>
+</div>
