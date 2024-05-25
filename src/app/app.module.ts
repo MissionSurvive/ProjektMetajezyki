@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
