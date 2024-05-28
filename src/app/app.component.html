@@ -25,7 +25,7 @@
     <mat-card-actions>
       <button mat-button>Szczegóły</button>
       <button mat-button>Modyfikuj</button>
-      <button mat-button>Usuń</button>
+      <button mat-button (click)="deleteBook(book.id!)">Usuń</button>
     </mat-card-actions>
   </mat-card>
 </div>

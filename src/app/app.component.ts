@@ -30,6 +30,18 @@ export class AppComponent implements OnInit {
     );
   }
 
+  deleteBook(bookId: number | undefined) {
+    if (bookId !== undefined) {
+      this.bookService.deleteBook(bookId).subscribe(
+        () => {
+          console.log('Book deleted successfully');
+          this.getBooks(); // Refresh the book list after deletion
+        },
+        (error) => console.error(error)
+      );
+    }
+  }
+
     openDialogForm() {
       this._dialog.open(BookDialogComponent)
     }
