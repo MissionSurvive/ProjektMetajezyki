@@ -44,11 +44,11 @@
       <mat-form-field appearance="fill">
         <mat-label>Status czytania</mat-label>
         <mat-select formControlName="status">
-          <mat-option value="planning">Zaplanowane</mat-option>
-          <mat-option value="reading">W trakcie</mat-option>
-          <mat-option value="on hold">Wstrzymane</mat-option>
-          <mat-option value="canceled">Anulowane</mat-option>
-          <mat-option value="completed">Ukończone</mat-option>
+          <mat-option value="Zaplanowane">Zaplanowane</mat-option>
+          <mat-option value="W trakcie czytania">W trakcie</mat-option>
+          <mat-option value="Wstrzymane">Wstrzymane</mat-option>
+          <mat-option value="Anulowane">Anulowane</mat-option>
+          <mat-option value="Ukończone">Ukończone</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -65,7 +65,7 @@
       </mat-form-field>
     </div>
     <div class="form-row">
-      <button mat-raised-button type="button" color="primary" (click)="fileInput.click()">Wybierz okładkę</button>
+      <button mat-raised-button type="button" color="primary" (click)="fileInput.click()" class="stretch-button">Wybierz okładkę</button>
       <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" style="display:none;">
     </div>
     <mat-dialog-actions>
