@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BookDialogComponent } from './book-dialog/book-dialog.component';
+import { BookAddDialogComponent } from './book-add-dialog/book-add-dialog.component';
 import { BookService } from './services/book.service';
 import { Book } from './models/book-model';
 
@@ -43,6 +43,6 @@ export class AppComponent implements OnInit {
   }
 
     openDialogForm() {
-      this._dialog.open(BookDialogComponent)
+      this._dialog.open(BookAddDialogComponent)
     }
 }

@@ -5,15 +5,15 @@ import { BookService } from '../services/book.service';
 import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
-  selector: 'app-book-dialog',
-  templateUrl: './book-dialog.component.html',
-  styleUrls: ['./book-dialog.component.scss']
+  selector: 'app-book-add-dialog',
+  templateUrl: './book-add-dialog.component.html',
+  styleUrls: ['./book-add-dialog.component.scss']
 })
-export class BookDialogComponent {
+export class BookAddDialogComponent {
   bookForm: FormGroup;
   base64Image:any = '';
 
-  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private _dialogRef: DialogRef<BookDialogComponent>) {
+  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private _dialogRef: DialogRef<BookAddDialogComponent>) {
     this.bookForm = this._fb.group({
       title: '',
       author: '',

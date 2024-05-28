@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { BookDialogComponent } from './book-dialog/book-dialog.component';
+import { BookAddDialogComponent } from './book-add-dialog/book-add-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -19,13 +19,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
+import { BookEditDialogComponent } from './book-edit-dialog/book-edit-dialog.component';
+import { BookDetailsDialogComponent } from './book-details-dialog/book-details-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookDialogComponent
+    BookAddDialogComponent,
+    BookEditDialogComponent,
+    BookDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
