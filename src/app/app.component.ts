@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BookAddDialogComponent } from './book-add-dialog/book-add-dialog.component';
 import { BookService } from './services/book.service';
 import { Book } from './models/book-model';
+import { BookDetailsDialogComponent } from './book-details-dialog/book-details-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +44,12 @@ export class AppComponent implements OnInit {
   }
 
     openDialogForm() {
-      this._dialog.open(BookAddDialogComponent)
+      this._dialog.open(BookAddDialogComponent);
     }
+
+    openDetailsDialog(book: Book) {
+      this._dialog.open(BookDetailsDialogComponent, {
+        data: book
+      });
+  }
 }

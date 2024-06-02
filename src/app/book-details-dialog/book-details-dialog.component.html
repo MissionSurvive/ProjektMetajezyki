@@ -1,1 +1,22 @@
-<p>book-details-dialog works!</p>
+<div class="dialog-container">
+<h2 mat-dialog-title>Szczegóły książki</h2>
+<mat-dialog-content class="dialog-content">
+  <div class="image-container">
+    <img [src]="book.image" alt="Book Cover" class="book-image">
+  </div>
+  <div class="details-container">
+    <p><b>Tytuł: {{ book.title }}</b></p>
+    <p><b>Autor: {{ book.author }}</b></p>
+    <p>Wydawnictwo: {{ book.publisher }}</p>
+    <p>Data wydania: {{ book.releaseDate | date:'dd-MM-yyyy' }}</p>
+    <p>Opis: {{ book.description }}</p>
+    <p>Łączna ilość stron: {{ book.pages }}</p>
+    <p>Przeczytane strony: {{ book.readpages }}/{{ book.pages }}</p>
+    <p>Status: {{ book.status }}</p>
+    <p>Ocena: {{ book.rating }}/10</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Zamknij</button>
+</mat-dialog-actions>
+</div>
