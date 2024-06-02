@@ -1,0 +1,30 @@
+.mat-dialog-container {
+    width: 600px;
+  }
+  
+h2 {
+    text-align: center;
+  }
+
+  dialog-content {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  mat-dialog-actions {
+    justify-content: center;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  
+  .form-row > mat-form-field {
+    width: 100%;
+  }  
+
+  .stretch-button {
+    width: 100%;
+  }

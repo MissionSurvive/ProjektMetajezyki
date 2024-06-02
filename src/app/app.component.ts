@@ -4,6 +4,7 @@ import { BookAddDialogComponent } from './book-add-dialog/book-add-dialog.compon
 import { BookService } from './services/book.service';
 import { Book } from './models/book-model';
 import { BookDetailsDialogComponent } from './book-details-dialog/book-details-dialog.component';
+import { BookEditDialogComponent } from './book-edit-dialog/book-edit-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -51,5 +52,12 @@ export class AppComponent implements OnInit {
       this._dialog.open(BookDetailsDialogComponent, {
         data: book
       });
+   }
+
+   openEditDialog(book: Book) {
+    this._dialog.open(BookEditDialogComponent, {
+      data: book
+    });
   }
+
 }
