@@ -1,27 +1,37 @@
 <p>
   <mat-toolbar color="primary">
-    <span>BookList</span>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My Book List</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button (click)="openDialogForm()">Dodaj książkę</button>
+    <button mat-icon-button (click)="openDialogForm()"><mat-icon>add</mat-icon></button>
   </mat-toolbar>
 </p>
 
-<div class="card-container">
-  <mat-card *ngFor="let book of books" class="card">
-    <mat-card-header>
-      <mat-card-title>{{ book.title }}</mat-card-title>
-      <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
-    </mat-card-header>
-    <img [src]="book.image" alt="Book Cover" class="card-image">
-    <mat-card-content>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="openDetailsDialog(book)">Szczegóły</button>
-      <button mat-button (click)="openEditDialog(book)">Modyfikuj</button>
-      <button mat-button (click)="deleteBook(book.id!)">Usuń</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-  
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" class="mat-sidenav">
+    <!-- Sidenav content goes here -->
+    <button mat-flat-button (click)="openDialogForm(); sidenav.close()"><mat-icon>add</mat-icon>Dodaj książkę</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="card-container">
+      <mat-card *ngFor="let book of books" class="card">
+        <mat-card-header>
+          <mat-card-title>{{ book.title }}</mat-card-title>
+          <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+        </mat-card-header>
+        <img [src]="book.image" alt="Book Cover" class="card-image">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="openDetailsDialog(book)">Szczegóły</button>
+          <button mat-button (click)="openEditDialog(book)">Modyfikuj</button>
+          <button mat-button (click)="deleteBook(book.id!)">Usuń</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <router-outlet></router-outlet>

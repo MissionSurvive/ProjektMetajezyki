@@ -19,3 +19,8 @@
     height: 450px;
     object-fit: fill;
   }
+
+  mat-sidenav button {
+    font-size: 16px; /* Increase font size */
+    padding: 12px 24px; /* Increase padding */
+  }

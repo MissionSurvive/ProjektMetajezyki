@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { BookEditDialogComponent } from './book-edit-dialog/book-edit-dialog.component';
 import { BookDetailsDialogComponent } from './book-details-dialog/book-details-dialog.component';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -49,6 +49,7 @@ import { BookDetailsDialogComponent } from './book-details-dialog/book-details-d
     CommonModule,
     HttpClientModule,
     MatCardModule,
+    MatSidenavModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
