@@ -4,8 +4,7 @@ import { DatePipe } from '@angular/common';
 import { BookService } from '../services/book.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from '../models/book-model';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-edit-dialog',
@@ -16,7 +15,7 @@ export class BookEditDialogComponent {
   bookForm: FormGroup;
   base64Image:any = '';
 
-  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, public dialogRef: MatDialogRef<BookEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public book: Book) {
+  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<BookEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public book: Book) {
     this.bookForm = this._fb.group({
       title: '',
       author: '',
@@ -46,6 +45,12 @@ export class BookEditDialogComponent {
     });
   }
 
+  openSnackBar(message: string, duration: number) {
+    this.snackBar.open(message, '', {
+      duration: duration,
+    });
+  }
+
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     let reader: FileReader = new FileReader();
@@ -57,17 +62,6 @@ export class BookEditDialogComponent {
 
     reader.readAsDataURL(file);
   }
-
-  asyncPagesValidator = (control: AbstractControl): Observable<ValidationErrors | null> => {
-    const pages = control.value;
-    const readpages = this.bookForm.get('readpages')?.value;
-  
-    if (readpages > pages) {
-      return of({ invalidReadPages: true });
-    }
-  
-    return of(null);
-  };
 
   hasError(control: AbstractControl | null): boolean {
     return !!(control && control.invalid && (control.dirty || control.touched));
@@ -94,7 +88,7 @@ export class BookEditDialogComponent {
     }
 
     if (!image) {
-      alert('Please provide an image for the book.');
+      this.openSnackBar('Dodaj brakujące zdjęcie okładki', 3000);
       return;
     }
 
@@ -103,7 +97,7 @@ export class BookEditDialogComponent {
       } else {
         this._bookService.editBook(this.book.id!, updatedBook).subscribe(
           () => {
-            console.log('Book updated successfully');
+            this.openSnackBar('Książka została edytowana', 1000);
             this.dialogRef.close(updatedBook);
           },
           (error) => {

@@ -6,18 +6,21 @@
       <mat-form-field appearance="fill">
         <mat-label>Tytuł</mat-label>
         <input matInput formControlName="title">
+        <mat-error *ngIf="hasError(bookForm.get('title') ?? null)">Wprowadź prawidłową wartość</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Autor</mat-label>
         <input matInput formControlName="author">
+        <mat-error *ngIf="hasError(bookForm.get('author') ?? null)">Wprowadź prawidłową wartość</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Wydawnictwo</mat-label>
         <input matInput formControlName="publisher">
+        <mat-error *ngIf="hasError(bookForm.get('publisher') ?? null)">Wprowadź prawidłową wartość</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
@@ -26,18 +29,21 @@
         <input matInput [matDatepicker]="releaseDatePicker" formControlName="releasedate">
         <mat-datepicker-toggle matSuffix [for]="releaseDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #releaseDatePicker></mat-datepicker>
+        <mat-error *ngIf="hasError(bookForm.get('releasedate') ?? null)">Wprowadź prawidłową wartość</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Liczba stron</mat-label>
         <input matInput type="number" formControlName="pages">
+        <mat-error *ngIf="bookForm.get('pages')?.errors?.['negative']">Liczba stron nie może być ujemna</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
     <mat-form-field appearance="fill">
       <mat-label>Opis</mat-label>
       <textarea matInput rows="4" formControlName="description"></textarea>
+      <mat-error *ngIf="hasError(bookForm.get('description') ?? null)">Wprowadź prawidłową wartość</mat-error>
     </mat-form-field>
     </div>
     <div class="form-row">
@@ -50,18 +56,22 @@
           <mat-option value="Anulowane">Anulowane</mat-option>
           <mat-option value="Ukończone">Ukończone</mat-option>
         </mat-select>
+        <mat-error *ngIf="hasError(bookForm.get('status') ?? null)">Wprowadź prawidłową wartość</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Przeczytane strony</mat-label>
         <input matInput type="number" formControlName="readpages">
+        <mat-error *ngIf="bookForm.get('readpages')?.errors?.['negative']">Przeczytane strony nie mogą być ujemne</mat-error>
+        <mat-error *ngIf="bookForm.get('readpages')?.errors?.['invalidReadPages']">Liczba przeczytanych stron nie może być większa niż całkowita liczba stron</mat-error>
       </mat-form-field>
       </div>
       <div class="form-row">
       <mat-form-field appearance="fill">
         <mat-label>Ocena</mat-label>
         <input matInput type="number" min="1" max="10" formControlName="rating">
+        <mat-error *ngIf="bookForm.get('rating')?.errors?.['outOfRange']">Ocena musi być między 1 a 10</mat-error>
       </mat-form-field>
     </div>
     <div class="form-row">
@@ -69,7 +79,7 @@
       <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" style="display:none;">
     </div>
     <mat-dialog-actions>
-      <button mat-raised-button (click)="onCancel()">Anuluj</button>
+      <button mat-raised-button (click)="dialogRef.close()">Anuluj</button>
       <button mat-raised-button color="primary" type="submit">Dodaj</button>
     </mat-dialog-actions>
   </form>

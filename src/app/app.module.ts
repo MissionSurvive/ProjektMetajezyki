@@ -22,7 +22,7 @@ import {MatCardModule} from '@angular/material/card';
 import { BookEditDialogComponent } from './book-edit-dialog/book-edit-dialog.component';
 import { BookDetailsDialogComponent } from './book-details-dialog/book-details-dialog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CommonModule,
     HttpClientModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
