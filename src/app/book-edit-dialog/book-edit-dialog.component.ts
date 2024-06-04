@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BookService } from '../services/book.service';
@@ -15,13 +15,13 @@ export class BookEditDialogComponent {
   bookForm: FormGroup;
   base64Image:any = '';
 
-  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<BookEditDialogComponent>, @Inject(MAT_DIALOG_DATA) public book: Book) {
+  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<BookEditDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA) public book: Book) {
     this.bookForm = this._fb.group({
       title: '',
       author: '',
       publisher: '',
       image: [''],
-      releasedate: '',
       pages: '',
       description: '',
       status: '',
@@ -36,7 +36,6 @@ export class BookEditDialogComponent {
       author: [this.book.author, Validators.required],
       publisher: [this.book.publisher, Validators.required],
       image: [this.book.image, Validators.required],
-      releasedate: [this.book.releaseDate, Validators.required],
       pages: [this.book.pages, Validators.required],
       description: [this.book.description, Validators.required],
       status: [this.book.status, Validators.required],

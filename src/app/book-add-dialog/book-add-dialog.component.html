@@ -25,15 +25,6 @@
     </div>
     <div class="form-row">
       <mat-form-field appearance="fill">
-        <mat-label>Data wydania</mat-label>
-        <input matInput [matDatepicker]="releaseDatePicker" formControlName="releasedate">
-        <mat-datepicker-toggle matSuffix [for]="releaseDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #releaseDatePicker></mat-datepicker>
-        <mat-error *ngIf="hasError(bookForm.get('releasedate') ?? null)">Wprowadź prawidłową wartość</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <mat-form-field appearance="fill">
         <mat-label>Liczba stron</mat-label>
         <input matInput type="number" formControlName="pages">
         <mat-error *ngIf="bookForm.get('pages')?.errors?.['negative']">Liczba stron nie może być ujemna</mat-error>

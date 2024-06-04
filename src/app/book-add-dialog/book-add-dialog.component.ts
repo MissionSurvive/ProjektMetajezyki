@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 import { BookService } from '../services/book.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from '../models/book-model';
@@ -15,14 +14,13 @@ export class BookAddDialogComponent {
   bookForm: FormGroup;
   base64Image:any = '';
 
-  constructor(private _fb: FormBuilder, private datePipe: DatePipe, private _bookService: BookService, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<BookAddDialogComponent>, 
+  constructor(private _fb: FormBuilder, private _bookService: BookService, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<BookAddDialogComponent>, 
     @Inject(MAT_DIALOG_DATA) public book: Book) {
     this.bookForm = this._fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
       publisher: ['', Validators.required],
       image: ['', Validators.required],
-      releasedate: ['', Validators.required],
       pages: ['', Validators.required],
       description: ['', Validators.required],
       status: ['', Validators.required],
@@ -82,7 +80,6 @@ export class BookAddDialogComponent {
         author: this.bookForm.get('author')?.value,
         publisher: this.bookForm.get('publisher')?.value,
         image: this.bookForm.get('image')?.value,
-        releaseDateValue: this.bookForm.get('releasedate')?.value,
         pages: this.bookForm.get('pages')?.value,
         description: this.bookForm.get('description')?.value,
         status: this.bookForm.get('status')?.value,
