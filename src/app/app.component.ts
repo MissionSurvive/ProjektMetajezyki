@@ -47,7 +47,13 @@ export class AppComponent implements OnInit {
   }
 
     openDialogForm() {
-      this._dialog.open(BookAddDialogComponent);
+      const dialogRef = this._dialog.open(BookAddDialogComponent);
+
+      dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getBooks();
+      }
+    });
     }
 
     openDetailsDialog(book: Book) {
@@ -57,8 +63,14 @@ export class AppComponent implements OnInit {
    }
 
    openEditDialog(book: Book) {
-    this._dialog.open(BookEditDialogComponent, {
+    const dialogRef = this._dialog.open(BookEditDialogComponent, {
       data: book
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getBooks();
+      }
     });
   }
 
